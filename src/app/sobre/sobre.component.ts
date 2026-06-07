@@ -1,4 +1,4 @@
-// ===== SOBRE COMPONENT - TYPESCRIPT =====
+// SOBRE COMPONENT - TYPESCRIPT 
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -25,7 +25,7 @@ export interface Referencia {
 })
 export class SobreComponent {
 
-  // ===== ANO ATUAL (FOOTER) =====
+  // ANO ATUAL (FOOTER) 
   anoAtual: number = new Date().getFullYear();
 
   // ===== DUPLA 1 — DOCUMENTAÇÃO =====
@@ -38,7 +38,7 @@ export class SobreComponent {
     },
     {
       nome: 'Kelly',
-      idade: 22,                 
+      idade: 20,                 
       curso: 'Análise e Desenvolvimento de Sistemas',
       funcao: 'Documentação e Fundamentação Teórica'
     }
@@ -54,7 +54,7 @@ export class SobreComponent {
     },
     {
       nome: 'Ryan',     
-      idade: 23,                 
+      idade: 21,                 
       curso: 'Análise e Desenvolvimento de Sistemas',
       funcao: 'Desenvolvimento da Primeira Tela (Buscador ViaCEP)'
     }
@@ -70,7 +70,7 @@ export class SobreComponent {
     },
     {
       nome: 'Rafael Pasqual',     
-      idade: 22,                 
+      idade: 21,                 
       curso: 'Análise e Desenvolvimento de Sistemas',
       funcao: 'Desenvolvimento da Segunda Tela (Sobre e Referências)'
     }
