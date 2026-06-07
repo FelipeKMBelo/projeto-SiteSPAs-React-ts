@@ -1,0 +1,182 @@
+<!-- ===== SOBRE COMPONENT - TEMPLATE ===== -->
+<div class="sobre-wrapper">
+
+  <!-- ===== HERO HEADER ===== -->
+  <header class="hero-header">
+    <div class="hero-content">
+      <span class="hero-tag">Projeto Universitário · 2026</span>
+      <h1 class="hero-title">Nossa <span class="highlight">Equipe</span></h1>
+      <p class="hero-subtitle">
+        Conheça os integrantes que tornaram este projeto possível, divididos em duplas
+        com responsabilidades específicas para garantir a entrega de qualidade.
+      </p>
+    </div>
+    <div class="hero-decoration">
+      <div class="deco-circle c1"></div>
+      <div class="deco-circle c2"></div>
+      <div class="deco-circle c3"></div>
+    </div>
+  </header>
+
+  <!-- ===== SEÇÃO 1: INTEGRANTES ===== -->
+  <section class="section-integrantes">
+    <div class="section-header">
+      <div class="section-number">01</div>
+      <div>
+        <h2 class="section-title">Sobre os Integrantes</h2>
+        <p class="section-desc">Equipe dividida em 3 duplas com funções bem definidas.</p>
+      </div>
+    </div>
+
+    <!-- DUPLA 1 -->
+    <div class="dupla-grupo">
+      <div class="dupla-label">
+        <span class="dupla-badge badge-1">Dupla 01</span>
+        <span class="dupla-role-title">Documentação do Projeto</span>
+      </div>
+      <div class="dupla-cards">
+
+        <article class="card" *ngFor="let integrante of dupla1">
+          <div class="card-accent"></div>
+          <div class="card-avatar">
+            <span class="avatar-initial">{{ integrante.nome.charAt(0) }}</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-nome">{{ integrante.nome }}</h3>
+            <div class="card-info-grid">
+              <div class="info-item">
+                <span class="info-label">Idade</span>
+                <span class="info-value">{{ integrante.idade }} anos</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Curso</span>
+                <span class="info-value">{{ integrante.curso }}</span>
+              </div>
+            </div>
+            <div class="card-funcao">
+              <span class="funcao-icon">◆</span>
+              <span class="funcao-texto">{{ integrante.funcao }}</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- DUPLA 2 -->
+    <div class="dupla-grupo">
+      <div class="dupla-label">
+        <span class="dupla-badge badge-2">Dupla 02</span>
+        <span class="dupla-role-title">Desenvolvimento — 1ª Página</span>
+      </div>
+      <div class="dupla-cards">
+
+        <article class="card" *ngFor="let integrante of dupla2">
+          <div class="card-accent accent-2"></div>
+          <div class="card-avatar avatar-2">
+            <span class="avatar-initial">{{ integrante.nome.charAt(0) }}</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-nome">{{ integrante.nome }}</h3>
+            <div class="card-info-grid">
+              <div class="info-item">
+                <span class="info-label">Idade</span>
+                <span class="info-value">{{ integrante.idade }} anos</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Curso</span>
+                <span class="info-value">{{ integrante.curso }}</span>
+              </div>
+            </div>
+            <div class="card-funcao funcao-2">
+              <span class="funcao-icon">◆</span>
+              <span class="funcao-texto">{{ integrante.funcao }}</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- DUPLA 3 -->
+    <div class="dupla-grupo">
+      <div class="dupla-label">
+        <span class="dupla-badge badge-3">Dupla 03</span>
+        <span class="dupla-role-title">Desenvolvimento — 2ª Página</span>
+      </div>
+      <div class="dupla-cards">
+
+        <article class="card" *ngFor="let integrante of dupla3">
+          <div class="card-accent accent-3"></div>
+          <div class="card-avatar avatar-3">
+            <span class="avatar-initial">{{ integrante.nome.charAt(0) }}</span>
+          </div>
+          <div class="card-body">
+            <h3 class="card-nome">{{ integrante.nome }}</h3>
+            <div class="card-info-grid">
+              <div class="info-item">
+                <span class="info-label">Idade</span>
+                <span class="info-value">{{ integrante.idade }} anos</span>
+              </div>
+              <div class="info-item">
+                <span class="info-label">Curso</span>
+                <span class="info-value">{{ integrante.curso }}</span>
+              </div>
+            </div>
+            <div class="card-funcao funcao-3">
+              <span class="funcao-icon">◆</span>
+              <span class="funcao-texto">{{ integrante.funcao }}</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== DIVISOR ===== -->
+  <div class="section-divider">
+    <span class="divider-line"></span>
+    <span class="divider-icon">✦</span>
+    <span class="divider-line"></span>
+  </div>
+
+  <!-- ===== SEÇÃO 2: REFERÊNCIAS ===== -->
+  <section class="section-referencias">
+    <div class="section-header">
+      <div class="section-number">02</div>
+      <div>
+        <h2 class="section-title">Referências Bibliográficas</h2>
+        <p class="section-desc">Fontes e documentações utilizadas no desenvolvimento deste projeto.</p>
+      </div>
+    </div>
+
+    <div class="referencias-grid">
+      <a
+        *ngFor="let ref of referencias; let i = index"
+        [href]="ref.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ref-card"
+      >
+        <div class="ref-index">{{ (i + 1).toString().padStart(2, '0') }}</div>
+        <div class="ref-content">
+          <span class="ref-categoria">{{ ref.categoria }}</span>
+          <h4 class="ref-titulo">{{ ref.titulo }}</h4>
+          <p class="ref-descricao">{{ ref.descricao }}</p>
+          <span class="ref-url-display">{{ ref.url }}</span>
+        </div>
+        <div class="ref-arrow">→</div>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="sobre-footer">
+    <p>Projeto desenvolvido para fins acadêmicos · Análise e Desenvolvimento de Sistemas</p>
+    <p class="footer-ano">{{ anoAtual }}</p>
+  </footer>
+
+</div>

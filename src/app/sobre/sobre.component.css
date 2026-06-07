@@ -1,0 +1,692 @@
+/* ================================================
+   SOBRE COMPONENT — CSS
+   Design: Editorial moderno com paleta escura elegante
+   ================================================ */
+
+/* ===== IMPORTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+/* ===== CUSTOM PROPERTIES ===== */
+:host {
+  --clr-bg: #0d0f14;
+  --clr-surface: #151820;
+  --clr-surface-2: #1c2030;
+  --clr-border: #262c40;
+  --clr-border-light: #303752;
+
+  --clr-text: #e8ebf4;
+  --clr-text-muted: #7a84a3;
+  --clr-text-faint: #454e6a;
+
+  /* Accent por dupla */
+  --clr-accent-1: #6c8eff;      /* Azul — Documentação */
+  --clr-accent-2: #34d4a0;      /* Verde-teal — 1ª Página */
+  --clr-accent-3: #f97b6b;      /* Coral — 2ª Página */
+
+  --clr-gold: #e8c97a;
+  --clr-white: #ffffff;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-xl: 32px;
+
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.35);
+  --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.5);
+  --shadow-glow-1: 0 0 40px rgba(108, 142, 255, 0.12);
+  --shadow-glow-2: 0 0 40px rgba(52, 212, 160, 0.10);
+  --shadow-glow-3: 0 0 40px rgba(249, 123, 107, 0.10);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== RESET CONTEXTO ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== WRAPPER PRINCIPAL ===== */
+.sobre-wrapper {
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  padding-bottom: 60px;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(108, 142, 255, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 90% 60%, rgba(249, 123, 107, 0.04) 0%, transparent 60%);
+}
+
+/* ================================================
+   HERO HEADER
+   ================================================ */
+.hero-header {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 48px 72px;
+  border-bottom: 1px solid var(--clr-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.hero-content {
+  max-width: 600px;
+  z-index: 1;
+}
+
+.hero-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--clr-accent-1);
+  background: rgba(108, 142, 255, 0.1);
+  border: 1px solid rgba(108, 142, 255, 0.25);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--clr-white);
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+}
+
+.hero-title .highlight {
+  color: transparent;
+  background: linear-gradient(135deg, var(--clr-accent-1) 0%, var(--clr-accent-2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--clr-text-muted);
+  max-width: 480px;
+}
+
+/* Decoração geométrica hero */
+.hero-decoration {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 260px;
+  height: 260px;
+  pointer-events: none;
+}
+
+.deco-circle {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid;
+  animation: spin-slow linear infinite;
+}
+
+.c1 {
+  width: 260px; height: 260px;
+  border-color: rgba(108, 142, 255, 0.15);
+  top: 0; left: 0;
+  animation-duration: 30s;
+}
+
+.c2 {
+  width: 180px; height: 180px;
+  border-color: rgba(52, 212, 160, 0.18);
+  top: 40px; left: 40px;
+  animation-duration: 20s;
+  animation-direction: reverse;
+}
+
+.c3 {
+  width: 100px; height: 100px;
+  background: radial-gradient(circle, rgba(249, 123, 107, 0.15) 0%, transparent 70%);
+  border-color: rgba(249, 123, 107, 0.25);
+  top: 80px; left: 80px;
+  animation-duration: 12s;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ================================================
+   SEÇÃO GENÉRICA
+   ================================================ */
+section {
+  padding: 64px 48px;
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 52px;
+}
+
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--clr-text-faint);
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  margin-top: 4px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 8px;
+}
+
+.section-desc {
+  font-size: 14px;
+  color: var(--clr-text-muted);
+  font-weight: 300;
+}
+
+/* ================================================
+   SEÇÃO 1: INTEGRANTES — DUPLAS
+   ================================================ */
+.section-integrantes {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ===== GRUPO DE DUPLA ===== */
+.dupla-grupo {
+  margin-bottom: 56px;
+}
+
+.dupla-grupo:last-child {
+  margin-bottom: 0;
+}
+
+/* Label da dupla */
+.dupla-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.dupla-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  border: 1px solid;
+}
+
+.badge-1 {
+  color: var(--clr-accent-1);
+  border-color: rgba(108, 142, 255, 0.35);
+  background: rgba(108, 142, 255, 0.08);
+}
+
+.badge-2 {
+  color: var(--clr-accent-2);
+  border-color: rgba(52, 212, 160, 0.35);
+  background: rgba(52, 212, 160, 0.08);
+}
+
+.badge-3 {
+  color: var(--clr-accent-3);
+  border-color: rgba(249, 123, 107, 0.35);
+  background: rgba(249, 123, 107, 0.08);
+}
+
+.dupla-role-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--clr-text-muted);
+  letter-spacing: 0.02em;
+}
+
+/* ===== GRID DE CARDS ===== */
+.dupla-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+  position: relative;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 28px 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: var(--transition);
+  box-shadow: var(--shadow-card);
+}
+
+.card:hover {
+  border-color: var(--clr-border-light);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card), var(--shadow-glow-1);
+}
+
+.dupla-grupo:nth-child(2) .card:hover { box-shadow: var(--shadow-card), var(--shadow-glow-2); }
+.dupla-grupo:nth-child(3) .card:hover { box-shadow: var(--shadow-card), var(--shadow-glow-3); }
+
+/* Acento lateral do card */
+.card-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--clr-accent-1), transparent);
+  border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+}
+
+.accent-2 {
+  background: linear-gradient(to bottom, var(--clr-accent-2), transparent);
+}
+
+.accent-3 {
+  background: linear-gradient(to bottom, var(--clr-accent-3), transparent);
+}
+
+/* Avatar */
+.card-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(108, 142, 255, 0.25) 0%, rgba(108, 142, 255, 0.05) 100%);
+  border: 1.5px solid rgba(108, 142, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.avatar-2 {
+  background: linear-gradient(135deg, rgba(52, 212, 160, 0.25) 0%, rgba(52, 212, 160, 0.05) 100%);
+  border-color: rgba(52, 212, 160, 0.3);
+}
+
+.avatar-3 {
+  background: linear-gradient(135deg, rgba(249, 123, 107, 0.25) 0%, rgba(249, 123, 107, 0.05) 100%);
+  border-color: rgba(249, 123, 107, 0.3);
+}
+
+.avatar-initial {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--clr-accent-1);
+}
+
+.avatar-2 .avatar-initial { color: var(--clr-accent-2); }
+.avatar-3 .avatar-initial { color: var(--clr-accent-3); }
+
+/* Corpo do card */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.card-nome {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--clr-white);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+/* Grid de infos */
+.card-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.info-label {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--clr-text-faint);
+}
+
+.info-value {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--clr-text-muted);
+  line-height: 1.4;
+}
+
+/* Função */
+.card-funcao {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 12px 14px;
+  background: rgba(108, 142, 255, 0.06);
+  border: 1px solid rgba(108, 142, 255, 0.12);
+  border-radius: var(--radius-sm);
+  margin-top: 4px;
+}
+
+.funcao-2 {
+  background: rgba(52, 212, 160, 0.06);
+  border-color: rgba(52, 212, 160, 0.12);
+}
+
+.funcao-3 {
+  background: rgba(249, 123, 107, 0.06);
+  border-color: rgba(249, 123, 107, 0.12);
+}
+
+.funcao-icon {
+  font-size: 8px;
+  color: var(--clr-accent-1);
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+.funcao-2 .funcao-icon { color: var(--clr-accent-2); }
+.funcao-3 .funcao-icon { color: var(--clr-accent-3); }
+
+.funcao-texto {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--clr-text);
+  line-height: 1.5;
+}
+
+/* ================================================
+   DIVISOR
+   ================================================ */
+.section-divider {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0 48px;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: var(--clr-border);
+}
+
+.divider-icon {
+  color: var(--clr-gold);
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+/* ================================================
+   SEÇÃO 2: REFERÊNCIAS
+   ================================================ */
+.section-referencias {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Grid de referências */
+.referencias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* Card de referência */
+.ref-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 22px 20px;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.ref-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(108, 142, 255, 0.04) 0%, transparent 60%);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.ref-card:hover {
+  border-color: rgba(108, 142, 255, 0.35);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-soft), var(--shadow-glow-1);
+}
+
+.ref-card:hover::before {
+  opacity: 1;
+}
+
+.ref-index {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--clr-text-faint);
+  padding-top: 2px;
+  flex-shrink: 0;
+  min-width: 28px;
+}
+
+.ref-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ref-categoria {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clr-accent-1);
+  opacity: 0.85;
+}
+
+.ref-titulo {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--clr-white);
+  line-height: 1.35;
+}
+
+.ref-descricao {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--clr-text-muted);
+  line-height: 1.55;
+  margin-top: 2px;
+}
+
+.ref-url-display {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--clr-text-faint);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 6px;
+  display: block;
+}
+
+.ref-arrow {
+  font-size: 18px;
+  color: var(--clr-text-faint);
+  transition: var(--transition);
+  flex-shrink: 0;
+  padding-top: 2px;
+  margin-left: auto;
+}
+
+.ref-card:hover .ref-arrow {
+  color: var(--clr-accent-1);
+  transform: translate(3px, -3px);
+}
+
+/* ================================================
+   FOOTER
+   ================================================ */
+.sobre-footer {
+  text-align: center;
+  padding: 40px 48px 20px;
+  border-top: 1px solid var(--clr-border);
+  margin-top: 20px;
+}
+
+.sobre-footer p {
+  font-size: 12px;
+  color: var(--clr-text-faint);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+.footer-ano {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+/* ================================================
+   RESPONSIVIDADE
+   ================================================ */
+
+/* Tablet (≤ 900px) */
+@media (max-width: 900px) {
+  .hero-header {
+    padding: 56px 32px 48px;
+  }
+
+  .hero-decoration {
+    display: none;
+  }
+
+  section {
+    padding: 48px 32px;
+  }
+
+  .section-divider {
+    padding: 0 32px;
+  }
+
+  .referencias-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile (≤ 640px) */
+@media (max-width: 640px) {
+  .hero-header {
+    padding: 40px 20px 36px;
+  }
+
+  section {
+    padding: 40px 20px;
+  }
+
+  .section-divider {
+    padding: 0 20px;
+  }
+
+  .section-header {
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .section-number {
+    align-self: flex-start;
+  }
+
+  .dupla-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 22px 20px 18px;
+  }
+
+  .card-info-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .ref-card {
+    padding: 18px 16px;
+  }
+
+  .sobre-footer {
+    padding: 32px 20px 16px;
+  }
+
+  .dupla-label {
+    flex-wrap: wrap;
+  }
+}
+
+/* Mobile pequeno (≤ 380px) */
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 34px;
+  }
+
+  .dupla-cards {
+    grid-template-columns: 1fr;
+  }
+}
