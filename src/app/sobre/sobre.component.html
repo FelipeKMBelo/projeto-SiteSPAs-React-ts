@@ -1,5 +1,8 @@
 <!-- ===== SOBRE COMPONENT - TEMPLATE ===== -->
-<div class="sobre-wrapper">
+<div class="sobre-wrapper" [class.tema-claro]="theme.claro()">
+
+  <!-- ===== NAVBAR (compartilhada) ===== -->
+  <app-navbar></app-navbar>
 
   <!-- ===== HERO HEADER ===== -->
   <header class="hero-header">

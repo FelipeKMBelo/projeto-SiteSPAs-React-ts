@@ -1,0 +1,85 @@
+<header class="navbar" [class.tema-claro]="theme.claro()">
+  <div class="navbar-logo">
+    <span class="logo-icone">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#fff"/>
+      </svg>
+    </span>
+    <div class="navbar-logo-texto">
+      <span class="logo-nome">Busca<span class="logo-destaque">CEP</span></span>
+      <small>Encontre endereços de forma rápida</small>
+    </div>
+  </div>
+
+  <nav class="navbar-links">
+    <a routerLink="/" routerLinkActive="ativo" [routerLinkActiveOptions]="{ exact: true }" class="nav-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" fill="currentColor"/></svg>
+      Início
+    </a>
+    <a routerLink="/sobre" routerLinkActive="ativo" class="nav-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><line x1="12" y1="11" x2="12" y2="16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="8" r="1" fill="currentColor"/></svg>
+      Sobre
+    </a>
+  </nav>
+
+  <div class="navbar-acoes">
+    <!-- TOGGLE TEMA -->
+    <button class="btn-tema" (click)="theme.toggle()" [title]="theme.claro() ? 'Ativar modo escuro' : 'Ativar modo claro'">
+      <svg *ngIf="!theme.claro()" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
+      <svg *ngIf="theme.claro()" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+
+    <!-- FAVORITOS -->
+    <div class="favoritos-wrapper">
+      <button
+        class="btn-favoritos"
+        [class.ativo]="favoritosSrv.items().length > 0"
+        (click)="togglePainel()"
+        title="Meus favoritos"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
+          <polygon
+            points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"
+            [attr.fill]="favoritosSrv.items().length > 0 ? 'currentColor' : 'none'"
+            stroke="currentColor" stroke-width="2"
+          />
+        </svg>
+        Favoritos
+        <span class="favoritos-badge" *ngIf="favoritosSrv.items().length > 0">{{ favoritosSrv.items().length }}</span>
+      </button>
+
+      <div class="painel-favoritos" *ngIf="painelAberto">
+        <div class="painel-header">
+          <span class="painel-titulo">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26" fill="currentColor" stroke="currentColor" stroke-width="2"/></svg>
+            Favoritos salvos
+          </span>
+          <button class="painel-fechar" (click)="painelAberto = false">✕</button>
+        </div>
+
+        <p class="painel-vazio" *ngIf="favoritosSrv.items().length === 0">
+          Nenhum CEP favoritado ainda.<br>
+          <small>Busque um CEP e clique em Favoritar ★</small>
+        </p>
+
+        <ul class="painel-lista" *ngIf="favoritosSrv.items().length > 0">
+          <li *ngFor="let fav of favoritosSrv.items()" class="painel-item" (click)="abrirFavorito(fav)">
+            <div class="painel-item-info">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" fill="currentColor"/></svg>
+              <div>
+                <span class="painel-cep">{{ fav.cep }}</span>
+                <span class="painel-local">{{ fav.localidade }} — {{ fav.uf }}</span>
+              </div>
+            </div>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><polyline points="9,18 15,12 9,6" stroke="currentColor" stroke-width="2"/></svg>
+          </li>
+        </ul>
+
+        <button class="painel-limpar" *ngIf="favoritosSrv.items().length > 0" (click)="limpar()">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><polyline points="3,6 5,6 21,6" stroke="currentColor" stroke-width="2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" stroke="currentColor" stroke-width="2"/></svg>
+          Limpar favoritos
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

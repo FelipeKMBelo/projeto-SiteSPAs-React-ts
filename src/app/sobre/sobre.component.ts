@@ -1,6 +1,8 @@
 // SOBRE COMPONENT - TYPESCRIPT 
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { ThemeService } from '../services/theme.service';
 
 export interface Integrante {
   nome: string;
@@ -19,13 +21,14 @@ export interface Referencia {
 @Component({
   selector: 'app-sobre',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NavbarComponent],
   templateUrl: './sobre.component.html',
   styleUrl: './sobre.component.css'
 })
 export class SobreComponent {
+  theme = inject(ThemeService);
 
-  // ANO ATUAL (FOOTER) 
+  // ANO ATUAL (FOOTER)
   anoAtual: number = new Date().getFullYear();
 
   // ===== DUPLA 1 — DOCUMENTAÇÃO =====

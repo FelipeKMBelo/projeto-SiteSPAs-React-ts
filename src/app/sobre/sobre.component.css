@@ -4,26 +4,26 @@
    ================================================ */
 
 /* ===== IMPORTS ===== */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
-/* ===== CUSTOM PROPERTIES ===== */
+/* ===== CUSTOM PROPERTIES (alinhado ao buscador) ===== */
 :host {
-  --clr-bg: #0d0f14;
-  --clr-surface: #151820;
-  --clr-surface-2: #1c2030;
-  --clr-border: #262c40;
-  --clr-border-light: #303752;
+  --clr-bg: #0e0d18;
+  --clr-surface: #171624;
+  --clr-surface-2: #201e33;
+  --clr-border: #2c2942;
+  --clr-border-light: #3a3658;
 
-  --clr-text: #e8ebf4;
-  --clr-text-muted: #7a84a3;
-  --clr-text-faint: #454e6a;
+  --clr-text: #eae9f6;
+  --clr-text-muted: #9b96b8;
+  --clr-text-faint: #6a6488;
 
-  /* Accent por dupla */
-  --clr-accent-1: #6c8eff;      /* Azul — Documentação */
-  --clr-accent-2: #34d4a0;      /* Verde-teal — 1ª Página */
-  --clr-accent-3: #f97b6b;      /* Coral — 2ª Página */
+  /* Accent por dupla — família roxa coesa */
+  --clr-accent-1: #8b7cf6;      /* Roxo — Dupla 1 (mantido) */
+  --clr-accent-2: #34d399;      /* Verde — Dupla 2 */
+  --clr-accent-3: #fbbf24;      /* Amarelo — Dupla 3 */
 
-  --clr-gold: #e8c97a;
+  --clr-gold: #c4b5fd;
   --clr-white: #ffffff;
 
   --radius-sm: 8px;
@@ -33,15 +33,37 @@
 
   --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.35);
   --shadow-card: 0 8px 40px rgba(0, 0, 0, 0.5);
-  --shadow-glow-1: 0 0 40px rgba(108, 142, 255, 0.12);
-  --shadow-glow-2: 0 0 40px rgba(52, 212, 160, 0.10);
-  --shadow-glow-3: 0 0 40px rgba(249, 123, 107, 0.10);
+  --shadow-glow-1: 0 0 40px rgba(139, 124, 246, 0.12);
+  --shadow-glow-2: 0 0 40px rgba(52, 211, 153, 0.10);
+  --shadow-glow-3: 0 0 40px rgba(251, 191, 36, 0.10);
 
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'DM Sans', sans-serif;
-  --font-mono: 'DM Mono', monospace;
+  --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
   --transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== TEMA CLARO (igual ao buscador) ===== */
+.sobre-wrapper.tema-claro {
+  --clr-bg: #eef0f7;
+  --clr-surface: #ffffff;
+  --clr-surface-2: #f4f5fb;
+  --clr-border: #e6e8f2;
+  --clr-border-light: #d6d9ec;
+
+  --clr-text: #2b2a3d;
+  --clr-text-muted: #7c7a93;
+  --clr-text-faint: #a9a7bd;
+
+  --clr-accent-1: #7c5cfc;
+  --clr-accent-2: #10b981;
+  --clr-accent-3: #d99e00;
+
+  --clr-gold: #7c5cfc;
+
+  --shadow-soft: 0 4px 24px rgba(91, 79, 168, 0.08);
+  --shadow-card: 0 8px 40px rgba(91, 79, 168, 0.12);
 }
 
 /* ===== RESET CONTEXTO ===== */
@@ -59,8 +81,19 @@
   min-height: 100vh;
   padding-bottom: 60px;
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(108, 142, 255, 0.07) 0%, transparent 70%),
-    radial-gradient(ellipse 60% 40% at 90% 60%, rgba(249, 123, 107, 0.04) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(139, 124, 246, 0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 90% 60%, rgba(251, 191, 36, 0.04) 0%, transparent 60%);
+  animation: page-enter 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animação suave de entrada/troca de página */
+@keyframes page-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sobre-wrapper { animation: none; }
 }
 
 /* ================================================
@@ -89,8 +122,8 @@
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--clr-accent-1);
-  background: rgba(108, 142, 255, 0.1);
-  border: 1px solid rgba(108, 142, 255, 0.25);
+  background: rgba(139, 124, 246, 0.1);
+  border: 1px solid rgba(139, 124, 246, 0.25);
   padding: 6px 14px;
   border-radius: 100px;
   margin-bottom: 24px;
@@ -99,9 +132,9 @@
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(42px, 6vw, 72px);
-  font-weight: 900;
+  font-weight: 800;
   line-height: 1.05;
-  color: var(--clr-white);
+  color: var(--clr-text);
   letter-spacing: -0.02em;
   margin-bottom: 20px;
 }
@@ -141,14 +174,14 @@
 
 .c1 {
   width: 260px; height: 260px;
-  border-color: rgba(108, 142, 255, 0.15);
+  border-color: rgba(139, 124, 246, 0.15);
   top: 0; left: 0;
   animation-duration: 30s;
 }
 
 .c2 {
   width: 180px; height: 180px;
-  border-color: rgba(52, 212, 160, 0.18);
+  border-color: rgba(52, 211, 153, 0.18);
   top: 40px; left: 40px;
   animation-duration: 20s;
   animation-direction: reverse;
@@ -156,8 +189,8 @@
 
 .c3 {
   width: 100px; height: 100px;
-  background: radial-gradient(circle, rgba(249, 123, 107, 0.15) 0%, transparent 70%);
-  border-color: rgba(249, 123, 107, 0.25);
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 70%);
+  border-color: rgba(251, 191, 36, 0.25);
   top: 80px; left: 80px;
   animation-duration: 12s;
 }
@@ -199,7 +232,7 @@ section {
   font-family: var(--font-display);
   font-size: clamp(26px, 3.5vw, 40px);
   font-weight: 700;
-  color: var(--clr-white);
+  color: var(--clr-text);
   letter-spacing: -0.02em;
   line-height: 1.15;
   margin-bottom: 8px;
@@ -249,20 +282,20 @@ section {
 
 .badge-1 {
   color: var(--clr-accent-1);
-  border-color: rgba(108, 142, 255, 0.35);
-  background: rgba(108, 142, 255, 0.08);
+  border-color: rgba(139, 124, 246, 0.35);
+  background: rgba(139, 124, 246, 0.08);
 }
 
 .badge-2 {
   color: var(--clr-accent-2);
-  border-color: rgba(52, 212, 160, 0.35);
-  background: rgba(52, 212, 160, 0.08);
+  border-color: rgba(52, 211, 153, 0.35);
+  background: rgba(52, 211, 153, 0.08);
 }
 
 .badge-3 {
   color: var(--clr-accent-3);
-  border-color: rgba(249, 123, 107, 0.35);
-  background: rgba(249, 123, 107, 0.08);
+  border-color: rgba(251, 191, 36, 0.35);
+  background: rgba(251, 191, 36, 0.08);
 }
 
 .dupla-role-title {
@@ -327,8 +360,8 @@ section {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(108, 142, 255, 0.25) 0%, rgba(108, 142, 255, 0.05) 100%);
-  border: 1.5px solid rgba(108, 142, 255, 0.3);
+  background: linear-gradient(135deg, rgba(139, 124, 246, 0.25) 0%, rgba(139, 124, 246, 0.05) 100%);
+  border: 1.5px solid rgba(139, 124, 246, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -336,13 +369,13 @@ section {
 }
 
 .avatar-2 {
-  background: linear-gradient(135deg, rgba(52, 212, 160, 0.25) 0%, rgba(52, 212, 160, 0.05) 100%);
-  border-color: rgba(52, 212, 160, 0.3);
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.25) 0%, rgba(52, 211, 153, 0.05) 100%);
+  border-color: rgba(52, 211, 153, 0.3);
 }
 
 .avatar-3 {
-  background: linear-gradient(135deg, rgba(249, 123, 107, 0.25) 0%, rgba(249, 123, 107, 0.05) 100%);
-  border-color: rgba(249, 123, 107, 0.3);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(251, 191, 36, 0.05) 100%);
+  border-color: rgba(251, 191, 36, 0.3);
 }
 
 .avatar-initial {
@@ -367,7 +400,7 @@ section {
   font-family: var(--font-display);
   font-size: 20px;
   font-weight: 700;
-  color: var(--clr-white);
+  color: var(--clr-text);
   letter-spacing: -0.01em;
   line-height: 1.2;
 }
@@ -406,20 +439,20 @@ section {
   align-items: flex-start;
   gap: 8px;
   padding: 12px 14px;
-  background: rgba(108, 142, 255, 0.06);
-  border: 1px solid rgba(108, 142, 255, 0.12);
+  background: rgba(139, 124, 246, 0.06);
+  border: 1px solid rgba(139, 124, 246, 0.12);
   border-radius: var(--radius-sm);
   margin-top: 4px;
 }
 
 .funcao-2 {
-  background: rgba(52, 212, 160, 0.06);
-  border-color: rgba(52, 212, 160, 0.12);
+  background: rgba(52, 211, 153, 0.06);
+  border-color: rgba(52, 211, 153, 0.12);
 }
 
 .funcao-3 {
-  background: rgba(249, 123, 107, 0.06);
-  border-color: rgba(249, 123, 107, 0.12);
+  background: rgba(251, 191, 36, 0.06);
+  border-color: rgba(251, 191, 36, 0.12);
 }
 
 .funcao-icon {
@@ -496,13 +529,13 @@ section {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(108, 142, 255, 0.04) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(139, 124, 246, 0.04) 0%, transparent 60%);
   opacity: 0;
   transition: var(--transition);
 }
 
 .ref-card:hover {
-  border-color: rgba(108, 142, 255, 0.35);
+  border-color: rgba(139, 124, 246, 0.35);
   transform: translateY(-3px);
   box-shadow: var(--shadow-soft), var(--shadow-glow-1);
 }
@@ -542,7 +575,7 @@ section {
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;
-  color: var(--clr-white);
+  color: var(--clr-text);
   line-height: 1.35;
 }
 
